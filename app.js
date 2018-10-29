@@ -2,17 +2,20 @@
 var request = require('request');
 var fs = require('fs');
 
-request.get('https://sytantris.github.io/http-examples/future.jpg')               // Note 1
+request.get('https://sytantris.github.io/http-examples/future.jpg')              
        .on('error', function (err) { 
-         console.log ('there is an error!');                                  // Note 2
+         console.log ('there is an error!');                                  
          throw err; 
        })
-       .on('response', function (response) {                           // Note 3
+       .on('response', function (response) {                           
          console.log('Response Status Code: ', response.statusCode);
-         response.statusMessage;
-         response.headers['content-type'];
+         console.log(response.statusMessage);
+         console.log(response.headers['content-type']);
        })
-       .pipe(fs.createWriteStream('./future.jpg'));               // Note 4
+       
+       .pipe(fs.createWriteStream('./future.jpg')); 
+       
+                
 
 // Notes:
 // 1. `request.get` is equivalent to `request()`
